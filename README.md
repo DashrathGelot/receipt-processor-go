@@ -2,73 +2,79 @@
 
 # Introduction
 
-- This document guide you how to setup the receipt processor project and how to run on docker and without docker
+- This document guides you on how to set up the Receipt Processor project and how to run it with or without Docker.
 
-> **_NOTE:_**  This is for fetch code reviewer only: I am beginner in go language but I am professional expert in Java and I have developed one project with java as well here it is: https://github.com/DashrathGelot/receipt-processor 
+> **_NOTE:_** This information is intended for Fetch code reviewers. I developed this project in Go, and I am a beginner in the Go language, but I am a professional expert in Java. I have also developed this project in Java, which you can find here: [Receipt Processor Java Project](https://github.com/DashrathGelot/receipt-processor) 
 
 ## Technologies
 
-The following technologies stack used as part of developing this project:
+The following technology stack was used in developing this project:
 
 * Backend: Go 1.21.0, Gin 1.9.1
-* API interceptor : Postman
+* API Interceptor : Postman
 
 ## Rule Assumption
-- For Rule 4, consider pair as lower bound value, e.g. if you have 5 items than it will consider 2 pair 
-- To valid Receipt did validation on only that fields which being used to calculate points, e.g.  
-    Item {
-      "shortDescription": "Mountain Dew 12PK",
-      "price": "6.49s"
-    }
-    
-    here, price is invalid but still going to process this without throwing error because price is not being used due to description rule.
-- if total or item price is 0 then rewarded points will be 0 for that
-- consider purchase date is in valid yyyy-mm-dd formate
-
+- For Rule 4, consider a pair as a lower bound value. For example, if you have 5 items, it will consider 2 pairs.
+- To validate a receipt, perform validation only on fields that are being used to calculate points. For example:
+  Item {"shortDescription": "Mountain Dew 12PK", "price": "6.49s"} Here, the price is invalid, but the processing will continue without throwing an error because the price is not being used due to the description rule.
+- Consider that the total and price are given as valid positive numbers.
+- Consider the total as the sum of all item prices.
+- If the total or item price is 0, the rewarded points will be 0 for that item.
+- Consider the purchase date to be in a valid yyyy-mm-dd format.
 
 # Getting Started
 
 ### How to run
-- you can run application using docker or local without docker
+- You can run the application using Docker or locally without Docker.
 
 #### Using Docker
-* go to main directory
-
+* clone the repository
 ```
-cd /receipt-processor
+git clone git@github.com:DashrathGelot/receipt-processor-go.git
 ```
 
-* build go application image in docker using below command
+* Navigate to the main directory:
+```
+cd /receipt-processor-go
+```
+
+* Build the Go application image in Docker using the following command:
 ```
 docker build -t receipt-processor .
 ```
 
-* run docker file
+* Run the Docker container:
 ```
 docker run -p 8080:8080 receipt-processor
 ```
 
 #### Using Local Without Docker
-- for this you need Go v1.21.0 and Gin on your machine
+- To run the application locally without Docker, make sure you have Go v1.21.0 and Gin installed on your machine.
 
-* go to main directory
+* Navigate to the main directory:
 ```
-cd /receipt-processor
+cd /receipt-processor-go
 ```
 
-* download packages
+* Download the required packages:
 ```
 go mod download
 ```
 
-* build project
+* Build the project:
 ```
 go build -o /receipt-processor
 ```
 
-* run server
+* Run the server:
 ```
 ./receipt-processor
+```
+
+#### Test Cases
+- You can find the test cases in the `main_test.go` file. To run the test cases, execute the following command:
+```
+go test
 ```
 
 ### Guides
@@ -101,13 +107,12 @@ body:
   "total": "9.00"
 }
 ```
-Note: here in json object all fields are required otherwise it will send error message
-- here handled validation as well
+> **_NOTE:_** All fields in the JSON object are required; otherwise, an error message will be sent. Validation is also handled.
 
 Console:
 ```json
 {
-    "id": "7cefe133-c027-4bc2-98c7-fa4a1f189ba5"
+    "id": "3faabe82-92d9-4e0e-9c9d-24b333a63e3e"
 }
 ```
 
@@ -121,12 +126,9 @@ Console:
     "points": 109
 }
 ```
-### Test Cases
-- You can find test cases in the directory below
-```
-/src/test/java/com/fetch/receiptprocessor
-```
-- here I did integration testing in java spring boot using junit5
-
 
 ### API Interceptor Output
+
+![Screenshot 2023-08-17 at 11.50.16 PM.png](Screenshot%202023-08-17%20at%2011.50.16%20PM.png)
+
+![Screenshot 2023-08-17 at 11.50.42 PM.png](Screenshot%202023-08-17%20at%2011.50.42%20PM.png)

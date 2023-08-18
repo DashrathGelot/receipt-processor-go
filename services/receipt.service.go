@@ -5,6 +5,7 @@ import (
 	"receipt-processor/models"
 	"receipt-processor/storage"
 	"receipt-processor/utils/rules"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
@@ -40,7 +41,7 @@ func ProcessReceipt(ctx *gin.Context) {
 	var points int
 
 	//Rule 1
-	if len(receipt.Retailer) > 0 {
+	if len(strings.TrimSpace(receipt.Retailer)) > 0 {
 		points += rules.Alphanumeric(receipt.Retailer)
 	} else {
 		errors = append(errors, "Invalid Retailer Name")
