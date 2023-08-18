@@ -14,6 +14,7 @@ The following technology stack was used in developing this project:
 * API Interceptor : Postman
 
 ## Rule Assumption
+The following assumption I made in the rules:
 - For Rule 4, consider a pair as a lower bound value. For example, if you have 5 items, it will consider 2 pairs.
 - To validate a receipt, perform validation only on fields that are being used to calculate points. For example:
   Item {"shortDescription": "Mountain Dew 12PK", "price": "6.49s"} Here, the price is invalid, but the processing will continue without throwing an error because the price is not being consider due to the description Rule 5.
@@ -130,6 +131,6 @@ Console:
 
 ### API Interceptor Output
 
-![Screenshot 2023-08-17 at 11.50.16 PM.png](Screenshot%202023-08-17%20at%2011.50.16%20PM.png)
+![Screenshot 2023-08-18 at 10.01.42 AM.png](resources%2FScreenshot%202023-08-18%20at%2010.01.42%20AM.png)
 
-![Screenshot 2023-08-17 at 11.50.42 PM.png](Screenshot%202023-08-17%20at%2011.50.42%20PM.png)
+![Screenshot 2023-08-17 at 11.50.42 PM.png](resources%2FScreenshot%202023-08-17%20at%2011.50.42%20PM.png)
