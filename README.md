@@ -22,6 +22,8 @@ The following technologies stack used as part of developing this project:
     }
     
     here, price is invalid but still going to process this without throwing error because price is not being used due to description rule.
+- if total or item price is 0 then rewarded points will be 0 for that
+- consider purchase date is in valid yyyy-mm-dd formate
 
 
 # Getting Started

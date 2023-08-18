@@ -17,10 +17,16 @@ func Alphanumeric(retailer string) int {
 }
 
 func IsTotalRound(total float64) bool {
+	if total == 0 {
+		return false
+	}
 	return math.Round(total) == total
 }
 
 func IsTotalMultiple(total float64) bool {
+	if total == 0 {
+		return false
+	}
 	return math.Mod(total, 0.25) == 0
 }
 
