@@ -16,10 +16,11 @@ The following technology stack was used in developing this project:
 ## Rule Assumption
 - For Rule 4, consider a pair as a lower bound value. For example, if you have 5 items, it will consider 2 pairs.
 - To validate a receipt, perform validation only on fields that are being used to calculate points. For example:
-  Item {"shortDescription": "Mountain Dew 12PK", "price": "6.49s"} Here, the price is invalid, but the processing will continue without throwing an error because the price is not being used due to the description rule.
+  Item {"shortDescription": "Mountain Dew 12PK", "price": "6.49s"} Here, the price is invalid, but the processing will continue without throwing an error because the price is not being consider due to the description Rule 5.
 - Consider that the total and price are given as valid positive numbers.
 - Consider the total as the sum of all item prices.
-- If the total or item price is 0, the rewarded points will be 0 for that item.
+- 0 rewarded points If the item price is 0.
+- 0 rewarded points if the value of total is 0.
 - Consider the purchase date to be in a valid yyyy-mm-dd format.
 
 # Getting Started
