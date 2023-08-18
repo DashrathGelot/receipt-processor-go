@@ -65,7 +65,7 @@ go mod download
 
 * Build the project:
 ```
-go build -o /receipt-processor
+go build -o receipt-processor
 ```
 
 * Run the server:
